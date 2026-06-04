@@ -1,0 +1,110 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║     Sistem Informasi Pendaftaran Siswa - Sanggar Bunda Sari          ║
+║     Dengan Algoritma Apriori untuk Rekomendasi Kombinasi Kelas        ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+📋 LANGKAH CEPAT MENJALANKAN APLIKASI:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. INSTALL DEPENDENCIES
+   ────────────────────────────────────────────────────────────────────
+   Buka terminal/command prompt di folder ini, lalu ketik:
+   
+   >>> pip install -r requirements.txt
+
+2. (OPSIONAL) GENERATE SAMPLE DATA
+   ────────────────────────────────────────────────────────────────────
+   Untuk menguji sistem dengan data contoh:
+   
+   >>> python generate_sample_data.py
+   
+   Ini akan membuat 20 siswa sample dengan pola registrasi beragam
+
+3. JALANKAN APLIKASI
+   ────────────────────────────────────────────────────────────────────
+   
+   Windows: Klik ganda file run.bat atau ketik:
+   >>> python app.py
+   
+   Aplikasi akan berjalan di: http://localhost:5000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 CARA PENGGUNAAN:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Halaman Utama (Home)
+   - Lihat statistik: Total Siswa, Total Kelas, Registrasi Aktif
+
+2. Registrasi Siswa Baru
+   - Klik menu "Registrasi Siswa"
+   - Isi data pribadi siswa
+   - Pilih kelas yang ingin diambil (centang minimal 1)
+   - Sistem akan menampilkan REKOMENDASI KELAS tambahan
+   - Klik "Daftar Sekarang"
+
+3. Melihat Data Siswa
+   - Klik menu "Data Siswa"
+   - Lihat semua registrasi dan kelas tersedia
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 FITUR REKOMENDASI:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Sistem menggunakan Algoritma Apriori untuk analisis pola
+• Rekomendasi berdasarkan kombinasi kelas yang sering dipilih bersama
+• Muncul otomatis saat memilih kelas
+• Menampilkan tingkat confidence (keyakinan)
+
+Catatan: Rekomendasi hanya muncul jika sudah ada minimal 2 siswa 
+dengan data registrasi. Gunakan generate_sample_data.py untuk testing.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📂 STRUKTUR FILE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+app.py                    → Flask application & database models
+apriori_algorithm.py      → Implementasi algoritma Apriori
+generate_sample_data.py   → Script untuk generate data contoh
+requirements.txt          → Dependencies Python
+README.md                 → Dokumentasi lengkap
+INSTALL.md                → Panduan instalasi detail
+run.bat                   → Script untuk menjalankan aplikasi
+templates/                → File HTML
+static/css/               → File CSS styling
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ TROUBLESHOOTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Port 5000 sudah digunakan?
+→ Edit app.py, ubah port=5000 ke port lain (misal: 5001)
+
+Module not found?
+→ Pastikan sudah: pip install -r requirements.txt
+
+Rekomendasi tidak muncul?
+→ Butuh minimal 2 siswa dengan registrasi
+→ Jalankan: python generate_sample_data.py
+
+Database error?
+→ Hapus file sanggar_bunda_sari.db dan restart aplikasi
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOKUMENTASI LENGKAP:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Lihat README.md untuk dokumentasi lengkap tentang:
+• Algoritma Apriori
+• Database schema
+• Parameter konfigurasi
+• Pengembangan lanjutan
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Selamat menggunakan sistem! 🎉
+

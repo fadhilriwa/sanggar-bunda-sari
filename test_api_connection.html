@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Koneksi API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .loading { color: orange; }
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Test Koneksi API</h1>
+    
+    <div class="test-box">
+        <h3>Test 1: Akses Setup</h3>
+        <p id="access-check" class="loading">Checking...</p>
+    </div>
+
+    <div class="test-box">
+        <h3>Test 2: Students API</h3>
+        <p id="students-status" class="loading">Testing...</p>
+        <pre id="students-data"></pre>
+    </div>
+
+    <div class="test-box">
+        <h3>Test 3: Classes API</h3>
+        <p id="classes-status" class="loading">Testing...</p>
+        <pre id="classes-data"></pre>
+    </div>
+
+    <div class="test-box">
+        <h3>Test 4: Registrations API</h3>
+        <p id="registrations-status" class="loading">Testing...</p>
+        <pre id="registrations-data"></pre>
+    </div>
+
+    <script>
+        // Check access method
+        const currentURL = window.location.href;
+        const accessCheck = document.getElementById('access-check');
+        
+        if (currentURL.includes(':5501') || currentURL.includes(':5500')) {
+            accessCheck.innerHTML = '❌ ERROR: Anda mengakses via LIVE SERVER (port 5501/5500)<br>' +
+                                   '✅ Solusi: Akses via <strong>http://localhost/sistem-pendaftaran-siswa/test_api_connection.html</strong>';
+            accessCheck.className = 'error';
+        } else if (currentURL.includes('localhost') || currentURL.includes('127.0.0.1') && !currentURL.includes(':')) {
+            accessCheck.innerHTML = '✅ BENAR: Akses via XAMPP Apache';
+            accessCheck.className = 'success';
+        } else {
+            accessCheck.innerHTML = '⚠️ WARNING: Metode akses tidak dikenali: ' + currentURL;
+            accessCheck.className = 'error';
+        }
+
+        // Test APIs
+        async function testAPI(url, statusId, dataId) {
+            const statusEl = document.getElementById(statusId);
+            const dataEl = document.getElementById(dataId);
+            
+            try {
+                statusEl.innerHTML = '⏳ Loading...';
+                statusEl.className = 'loading';
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    statusEl.innerHTML = `✅ SUCCESS (${response.status})`;
+                    statusEl.className = 'success';
+                    dataEl.textContent = JSON.stringify(data, null, 2);
+                } else {
+                    statusEl.innerHTML = `❌ ERROR (${response.status})`;
+                    statusEl.className = 'error';
+                    dataEl.textContent = JSON.stringify(data, null, 2);
+                }
+            } catch (error) {
+                statusEl.innerHTML = `❌ FETCH ERROR: ${error.message}`;
+                statusEl.className = 'error';
+                dataEl.textContent = error.stack;
+            }
+        }
+
+        // Run tests
+        testAPI('php/api/students.php', 'students-status', 'students-data');
+        testAPI('php/api/classes.php', 'classes-status', 'classes-data');
+        testAPI('php/api/registrations.php', 'registrations-status', 'registrations-data');
+    </script>
+</body>
+</html>

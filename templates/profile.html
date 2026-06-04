@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Sanggar Bunda Sari</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <header id="mainHeader">
+            <div class="header-container container-custom">
+                <div class="header-left">
+                    <div class="logo-container">
+                        <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">SBS</div>
+                    </div>
+                    <div class="logo-text d-none d-sm-block">
+                        <h1>Sanggar Bunda Sari</h1>
+                        <p>Profil</p>
+                    </div>
+                </div>
+                
+                <div class="header-content d-none d-lg-block">
+                    <nav>
+                        <a href="./index.html">Home</a>
+                        <a href="./dashboard.html">Dashboard</a>
+                        <a href="./students.html">Data Siswa</a>
+                        <a href="./register.html">Registrasi</a>
+                        <a href="./contact.html">Kontak</a>
+                        <a href="./profile.html" class="active">Profil</a>
+                    </nav>
+                </div>
+
+                <button class="menu-toggle d-lg-none" id="menuToggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+
+
+        <main class="container-custom py-4">
+            <!-- Hero Section -->
+            <div class="hero-wrapper mb-5 animate-fade-in">
+                <div class="hero-card text-center py-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <h1 class="mb-3">Tentang Sanggar Bunda Sari</h1>
+                            <p class="lead mb-0 text-white-50">
+                                Sanggar Bunda Sari adalah wadah pengembangan anak dalam bidang akademik, seperti Matematika dan Bahasa Inggris, Calistung, dan Melukis.
+                                Kami menghadirkan pengajar berpengalaman, kurikulum terstruktur, dan lingkungan belajar yang menyenangkan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visi & Misi -->
+            <div class="row g-4 mb-5 animate-slide-up delay-100">
+                <div class="col-lg-12">
+                     <div class="card border-0 shadow-sm overflow-hidden mb-4 reveal active glass">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="d-flex align-items-start gap-4">
+                                <div class="icon-box bg-primary-subtle text-primary rounded-4 p-3 d-flex align-items-center justify-content-center" style="width: 64px; height: 64px;">
+                                    <i class="bi bi-eye-fill fs-3"></i>
+                                </div>
+                                <div>
+                                    <h2 class="fw-bold mb-3 text-dark">Visi</h2>
+                                    <p class="lead text-muted mb-0">Menjadi sanggar yang dapat melahirkan generasi berprestasi dan berkarakter.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm overflow-hidden">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="d-flex align-items-start gap-4">
+                                <div class="icon-box bg-primary-subtle text-primary rounded-4 p-3 d-flex align-items-center justify-content-center" style="width: 64px; height: 64px;">
+                                    <i class="bi bi-bullseye fs-3"></i>
+                                </div>
+                                <div class="w-100">
+                                    <h2 class="fw-bold mb-4 text-dark">Misi</h2>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-3 p-3 bg-light rounded-3 border-start border-4 border-primary">
+                                            <i class="bi bi-check-circle-fill text-primary me-2"></i> Menjadi sanggar yang edukatif dan menyenangkan untuk murid belajar melalui tenaga pendidik yang kompeten dan penyayang, serta sarana prasarana yang aman dan nyaman.
+                                        </li>
+                                        <li class="mb-3 p-3 bg-light rounded-3 border-start border-4 border-primary">
+                                            <i class="bi bi-check-circle-fill text-primary me-2"></i> Menjadi mitra orang tua murid dalam proses pembelajaran.
+                                        </li>
+                                        <li class="mb-3 p-3 bg-light rounded-3 border-start border-4 border-primary">
+                                            <i class="bi bi-check-circle-fill text-primary me-2"></i> Menumbuhkan minat dalam diri murid untuk bertanggung jawab terhadap tugasnya sebagai pelajar.
+                                        </li>
+                                        <li class="mb-3 p-3 bg-light rounded-3 border-start border-4 border-primary">
+                                            <i class="bi bi-check-circle-fill text-primary me-2"></i> Menumbuhkan kepercayaan diri murid untuk berprestasi.
+                                        </li>
+                                        <li class="p-3 bg-light rounded-3 border-start border-4 border-primary">
+                                            <i class="bi bi-check-circle-fill text-primary me-2"></i> Menumbuhkan karakter (Bertanggung jawab, sopan, santun, pantang menyerah, rendah hati, berjiwa besar, dan penyayang).
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program Kami -->
+             <div class="mb-5 animate-slide-up delay-200">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Program Kami</h2>
+                    <p class="text-muted">Pilihan kelas untuk mengembangkan potensi buah hati</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm hover-lift text-center reveal active" style="animation-delay: 100ms">
+                            <div class="card-body p-4">
+                                <div class="icon-box mx-auto bg-indigo-50 text-indigo rounded-circle mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-book-fill fs-2"></i>
+                                </div>
+                                <h4 class="fw-bold mb-2">Kelas Akademik</h4>
+                                <p class="text-muted mb-0">Calistung, Matematika, dan Bahasa Inggris dengan metode menyenangkan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm hover-lift text-center reveal active" style="animation-delay: 200ms">
+                            <div class="card-body p-4">
+                                <div class="icon-box mx-auto bg-indigo-50 text-indigo rounded-circle mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-palette-fill fs-2"></i>
+                                </div>
+                                <h4 class="fw-bold mb-2">Kelas Seni</h4>
+                                <p class="text-muted mb-0">Melukis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm hover-lift text-center reveal active glass" style="animation-delay: 300ms">
+                            <div class="card-body p-4">
+                                <div class="icon-box mx-auto bg-indigo-50 text-indigo rounded-circle mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-star-fill fs-2"></i>
+                                </div>
+                                <h4 class="fw-bold mb-2">Kegiatan Menyenangkan</h4>
+                                <p class="text-muted mb-0">Penukaran koin anak dan Lomba perkalian.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keunggulan & Pencapaian -->
+            <div class="row g-5 mb-5 animate-slide-up delay-300">
+                 <div class="col-lg-6">
+                    <h3 class="fw-bold mb-4">Keunggulan Kami</h3>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="flex-shrink-0 bg-primary-subtle rounded-3 p-2 text-primary me-3">
+                            <i class="bi bi-person-check-fill fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Pengajar Berpengalaman</h5>
+                            <p class="text-muted mb-0">Tim profesional dengan passion mengajar anak-anak.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="flex-shrink-0 bg-primary-subtle rounded-3 p-2 text-primary me-3">
+                            <i class="bi bi-journal-text fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Kurikulum Terstruktur</h5>
+                            <p class="text-muted mb-0">Materi disusun sistematis sesuai tahapan usia.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="flex-shrink-0 bg-primary-subtle rounded-3 p-2 text-primary me-3">
+                            <i class="bi bi-building fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Fasilitas Lengkap</h5>
+                            <p class="text-muted mb-0">Ruang belajar nyaman dan peralatan memadai.</p>
+                        </div>
+                    </div>
+                     <div class="d-flex align-items-start">
+                        <div class="flex-shrink-0 bg-primary-subtle rounded-3 p-2 text-primary me-3">
+                            <i class="bi bi-heart-fill fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">Pendekatan Personal</h5>
+                            <p class="text-muted mb-0">Perhatian individual untuk setiap anak.</p>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="col-lg-6">
+                     <h3 class="fw-bold mb-4">Pencapaian</h3>
+                     <div class="row g-3">
+                         <div class="col-6">
+                             <div class="card border-0 shadow-sm bg-light text-center h-100">
+                                 <div class="card-body p-4">
+                                     <h2 class="display-4 fw-bold text-primary mb-0">100+</h2>
+                                     <p class="text-muted fw-bold">Siswa Aktif</p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-6">
+                             <div class="card border-0 shadow-sm bg-light text-center h-100">
+                                 <div class="card-body p-4">
+                                     <h2 class="display-4 fw-bold text-primary mb-0">14</h2>
+                                     <p class="text-muted fw-bold">Program Kelas</p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-6">
+                             <div class="card border-0 shadow-sm bg-light text-center h-100">
+                                 <div class="card-body p-4">
+                                     <h2 class="display-4 fw-bold text-primary mb-0">10+</h2>
+                                     <p class="text-muted fw-bold">Tahun Pengalaman</p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-6">
+                             <div class="card border-0 shadow-sm glass text-center h-100">
+                                 <div class="card-body p-4">
+                                     <h2 class="display-4 fw-bold text-primary mb-0">95%</h2>
+                                     <p class="text-muted fw-bold">Tingkat Kepuasan</p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+            
+            <!-- Testimoni -->
+            <div class="card border-0 shadow-sm animate-slide-up delay-300 bg-primary-subtle overflow-hidden">
+                <div class="card-body p-5 position-relative">
+                     <div class="position-absolute top-0 end-0 opacity-25 p-4">
+                        <i class="bi bi-quote display-1 text-primary"></i>
+                    </div>
+                    <h3 class="fw-bold mb-4 text-center">Apa Kata Mereka?</h3>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <p class="fst-italic text-muted mb-3">"Anak saya yang awalnya tidak suka matematika, sekarang jadi senang belajar. Gurunya sangat sabar."</p>
+                                    <h6 class="fw-bold mb-0">Ibu Rina</h6>
+                                    <small class="text-primary">Orang Tua Siswa</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <p class="fst-italic text-muted mb-3">"Program kelas seni sangat membantu mengembangkan kreativitas anak. Setiap minggu selalu ada karya baru."</p>
+                                    <h6 class="fw-bold mb-0">Pak Budi</h6>
+                                    <small class="text-primary">Orang Tua Siswa</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <p class="fst-italic text-muted mb-3">"Fasilitas lengkap dan biaya terjangkau. Sangat direkomendasikan untuk pengembangan bakat anak."</p>
+                                    <h6 class="fw-bold mb-0">Ibu Sari</h6>
+                                    <small class="text-primary">Orang Tua Siswa</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="container-custom">
+            <div class="row g-5">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="logo-container" style="width: 42px; height: 42px;">
+                            <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">SBS</div>
+                        </div>
+                        <h4 class="mb-0 text-white">Sanggar Bunda Sari</h4>
+                    </div>
+                    <p class="text-white-50 mb-4">
+                        Wadah pengembangan bakat dan minat anak. Kami percaya setiap anak memiliki potensi luar biasa yang menunggu untuk dikembangkan.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="https://wa.me/6287780074616" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="mb-4">Menu Utama</h4>
+                    <ul>
+                        <li><a href="./index.html"><i class="bi bi-chevron-right me-2"></i>Home</a></li>
+                        <li><a href="./profile.html"><i class="bi bi-chevron-right me-2"></i>Profil</a></li>
+                        <li><a href="./students.html"><i class="bi bi-chevron-right me-2"></i>Data Siswa</a></li>
+                        <li><a href="./register.html"><i class="bi bi-chevron-right me-2"></i>Pendaftaran</a></li>
+                        <li><a href="./contact.html"><i class="bi bi-chevron-right me-2"></i>Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Program Unggulan</h4>
+                    <ul>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Calistung (3-6 Tahun)</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Matematika Logika</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>English for Kids</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Seni Lukis & Kriya</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Tetap Terhubung</h4>
+                    <p class="text-white-50 mb-3">Dapatkan info promo dan jadwal terbaru.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Alamat Email">
+                        <button type="button" aria-label="Subscribe"><i class="bi bi-send-fill"></i></button>
+                    </div>
+                    <div class="mt-4 pt-3 border-top border-white-10">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-geo-alt-fill text-primary"></i>
+                            <span class="text-white-50">Jl. Greenery Permai No. 06 Blok A, Bojonggede, Kab. Bogor, Jawa Barat 16922</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-telephone-fill text-primary"></i>
+                            <span class="text-white-50">0877-8007-4616</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="mb-0 text-white-50">&copy; 2024 Sanggar Bunda Sari. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Main Custom JS -->
+    <script src="../static/js/main.js"></script>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close menu">×</button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="./index.html" onclick="closeMobileMenu()">Home</a>
+            <a href="./dashboard.html" onclick="closeMobileMenu()">Dashboard</a>
+            <a href="./students.html" onclick="closeMobileMenu()">Data Siswa</a>
+            <a href="./register.html" onclick="closeMobileMenu()">Registrasi Siswa</a>
+            <a href="./contact.html" onclick="closeMobileMenu()">Kontak</a>
+            <a href="./profile.html" class="active" onclick="closeMobileMenu()">Profil</a>
+        </nav>
+    </div>
+</body>
+</html>

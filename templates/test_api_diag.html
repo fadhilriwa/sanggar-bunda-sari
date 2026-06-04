@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Diagnostics</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #222; color: #eee; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .success { background: #155724; color: #d4edda; }
+        .error { background: #721c24; color: #f8d7da; }
+        .pending { background: #333; }
+    </style>
+</head>
+<body>
+    <h1>API Diagnostics</h1>
+    <div id="results"></div>
+    <script>
+        const paths = [
+            '../php/api/students.php',
+            '../php/api/classes.php',
+            '../php/api/registrations.php',
+            '../php/api/apriori_analysis.php' // Also check this one
+        ];
+
+        async function checkApi(path) {
+            const div = document.createElement('div');
+            div.className = 'status pending';
+            div.textContent = `Checking ${path}...`;
+            document.getElementById('results').appendChild(div);
+
+            try {
+                const res = await fetch(path);
+                const text = await res.text();
+                
+                if (res.ok) {
+                    try {
+                        const json = JSON.parse(text);
+                        div.className = 'status success';
+                        div.innerHTML = `<strong>✓ ${path}</strong><br>Status: ${res.status}<br>Items: ${Array.isArray(json) ? json.length : 'Object'}<br><small>${JSON.stringify(json).substring(0, 100)}...</small>`;
+                    } catch (e) {
+                        div.className = 'status error';
+                        div.innerHTML = `<strong>? ${path}</strong><br>Invalid JSON<br><small>${text.substring(0, 200)}...</small>`;
+                    }
+                } else {
+                    div.className = 'status error';
+                    div.textContent = `✗ ${path} (HTTP ${res.status})`;
+                }
+            } catch (err) {
+                div.className = 'status error';
+                div.textContent = `✗ ${path} (Network Error: ${err.message})`;
+            }
+        }
+
+        (async () => {
+            for (const path of paths) {
+                await checkApi(path);
+            }
+        })();
+    </script>
+</body>
+</html>

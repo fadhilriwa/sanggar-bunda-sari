@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Siswa - Sanggar Bunda Sari</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <header id="mainHeader">
+            <div class="header-container container-custom">
+                <div class="header-left">
+                    <div class="logo-container">
+                        <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">SBS</div>
+                    </div>
+                    <div class="logo-text d-none d-sm-block">
+                        <h1>Sanggar Bunda Sari</h1>
+                        <p>Data Siswa</p>
+                    </div>
+                </div>
+                
+                <div class="header-content d-none d-lg-block">
+                    <nav>
+                        <a href="./index.html">Home</a>
+                        <a href="./dashboard.html">Dashboard</a>
+                        <a href="./students.html" class="active">Data Siswa</a>
+                        <a href="./register.html">Registrasi</a>
+                        <a href="./contact.html">Kontak</a>
+                        <a href="./profile.html">Profil</a>
+                    </nav>
+                </div>
+
+                <button class="menu-toggle d-lg-none" id="menuToggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+
+
+        <main class="container-custom py-4">
+            <div class="hero-wrapper mb-4 animate-fade-in">
+                <div class="hero-card">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <h1 class="mb-2">Data Registrasi Siswa</h1>
+                            <p class="mb-0">Pantau daftar siswa, kelas yang diambil, dan statistik singkat dalam satu tampilan yang mudah dibaca.</p>
+                            <div class="mt-4 d-flex flex-wrap gap-3">
+                                <a class="btn btn-light text-primary fw-bold" href="./register.html"><i class="bi bi-plus-lg me-2"></i>Tambah Registrasi</a>
+                                <a class="btn btn-outline-light fw-bold" href="./dashboard.html"><i class="bi bi-speedometer2 me-2"></i>Lihat Dashboard</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-end d-none d-lg-block">
+                             <i class="bi bi-people-fill" style="font-size: 3rem; opacity: 0.5;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4 animate-slide-up delay-100">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 glass">
+                        <div class="card-body p-4 position-relative overflow-hidden">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--primary-gradient);"></div>
+                            <h2 class="display-4 fw-bold text-primary mb-2" id="totalStudents">-</h2>
+                            <p class="text-muted fw-bold mb-0">Total Siswa</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 position-relative overflow-hidden">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--primary-gradient);"></div>
+                            <h2 class="display-4 fw-bold text-primary mb-2" id="totalRegistrations">-</h2>
+                            <p class="text-muted fw-bold mb-0">Total Registrasi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4 position-relative overflow-hidden">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--primary-gradient);"></div>
+                            <h2 class="display-4 fw-bold text-primary mb-2" id="totalClasses">-</h2>
+                            <p class="text-muted fw-bold mb-0">Total Kelas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-5 animate-slide-up delay-200">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                        <div>
+                            <h3 class="fw-bold mb-1">Daftar Siswa</h3>
+                            <p class="text-muted mb-0">Data lengkap siswa yang terdaftar</p>
+                        </div>
+                        <button class="btn btn-outline-primary" onclick="loadData()">
+                            <i class="bi bi-arrow-clockwise me-2"></i>Refresh Data
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive rounded-3">
+                        <table class="table table-hover align-middle mb-0" id="registrations-table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="py-3 px-3 border-0 rounded-start">No</th>
+                                    <th class="py-3 border-0">Nama Siswa</th>
+                                    <th class="py-3 border-0">Kontak</th>
+                                    <th class="py-3 border-0">Jenis Kelamin</th>
+                                    <th class="py-3 border-0">Usia</th>
+                                    <th class="py-3 border-0">Alamat</th>
+                                    <th class="py-3 border-0">Kelas</th>
+                                    <th class="py-3 px-3 border-0 rounded-end">Tgl Registrasi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="registrations-body">
+                                <tr>
+                                    <td colspan="8" class="text-center py-5 text-muted">Memuat data...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-4 animate-slide-up delay-300">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h3 class="fw-bold mb-1">Data Kelas</h3>
+                            <p class="text-muted mb-0">Jadwal dan kapasitas kelas tersedia</p>
+                        </div>
+                    </div>
+                    <div id="classes-grid" class="row g-3">
+                        <!-- Classes will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let API_BASE = '';
+        async function resolveApiBase() {
+            const candidates = [
+                '..',
+                `${location.origin}/sistem-pendaftaran-siswa`
+            ];
+            for (const base of candidates) {
+                try {
+                    const res = await fetch(`${base}/php/api/classes.php`, { method: 'GET' });
+                    if (res.ok) { API_BASE = base; return; }
+                } catch (_) {}
+            }
+            API_BASE = candidates[0];
+        }
+        // Load and display registrations
+        async function loadData() {
+            try {
+                // Load all data
+                const [registrationsResponse, studentsResponse, classesResponse] = await Promise.all([
+                    fetch(`${API_BASE}/php/api/registrations.php`),
+                    fetch(`${API_BASE}/php/api/students.php`),
+                    fetch(`${API_BASE}/php/api/classes.php`)
+                ]);
+
+                const registrations = await registrationsResponse.json();
+                const students = await studentsResponse.json();
+                const classes = await classesResponse.json();
+
+                // Update stats
+                document.getElementById('totalStudents').textContent = Array.isArray(students) ? students.length : 0;
+                document.getElementById('totalRegistrations').textContent = Array.isArray(registrations) ? registrations.length : 0;
+                document.getElementById('totalClasses').textContent = Array.isArray(classes) ? classes.length : 0;
+
+                // Group registrations by student
+                const studentRegistrations = {};
+                if (Array.isArray(registrations)) {
+                     registrations.forEach(reg => {
+                        if (!studentRegistrations[reg.student_id]) {
+                            studentRegistrations[reg.student_id] = [];
+                        }
+                        studentRegistrations[reg.student_id].push(reg);
+                    });
+                }
+               
+                // Display in table
+                const tbody = document.getElementById('registrations-body');
+                tbody.innerHTML = '';
+
+                if (!Array.isArray(students) || students.length === 0) {
+                     tbody.innerHTML = '<tr><td colspan="8" class="text-center py-5 text-muted">Belum ada data siswa</td></tr>';
+                } else {
+                     // Combine all students with their registrations
+                    const allStudentIds = new Set([
+                        ...Object.keys(studentRegistrations),
+                        ...students.map(s => s.id.toString())
+                    ]);
+
+                    let rowIndex = 0;
+                    Array.from(allStudentIds).forEach(studentId => {
+                        const student = students.find(s => s.id == studentId);
+                        if (!student) return;
+
+                        const regs = studentRegistrations[studentId] || [];
+                        const classesList = regs.length > 0 
+                            ? regs.map(reg => reg.class_name).join(', ')
+                            : '<span class="text-muted fst-italic">Belum memilih kelas</span>';
+                        
+                        const registrationDate = regs.length > 0 
+                            ? (regs[0].registration_date || '-')
+                            : ((student.created_at || '').split(' ')[0] || '-');
+                        
+                        const row = document.createElement('tr');
+                        row.classList.add('reveal', 'active'); // Add animation class
+                        row.innerHTML = `
+                            <td class="px-3 fw-bold">${++rowIndex}</td>
+                            <td class="fw-bold text-dark">${student.name}</td>
+                            <td>
+                                <div class="small">${student.email}</div>
+                                <div class="small text-muted">${student.phone}</div>
+                            </td>
+                            <td>${student.gender || '-'}</td>
+                            <td>${student.age} th</td>
+                            <td class="text-truncate" style="max-width: 150px;" title="${student.address || ''}">${student.address || '-'}</td>
+                            <td>${classesList}</td>
+                            <td class="px-3 text-muted small">${registrationDate}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                }
+
+                // Load and display classes
+                await loadClasses();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                const tbody = document.getElementById('registrations-body');
+                
+                let errorMessage = 'Gagal memuat data.';
+                let errorDetails = error.message;
+                
+                if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                    errorMessage = 'Tidak dapat terhubung ke server PHP.';
+                    errorDetails = 'Pastikan server PHP berjalan.';
+                }
+                
+                tbody.innerHTML = `
+                    <tr><td colspan="8" class="text-center py-5">
+                    <div class="text-danger fw-bold mb-2">${errorMessage}</div>
+                    <div class="text-muted small mb-3">${errorDetails}</div>
+                    <button onclick="location.reload()" class="btn btn-sm btn-outline-primary">Refresh Halaman</button>
+                    </td></tr>`;
+            }
+        }
+
+        // Load classes
+        async function loadClasses() {
+            try {
+                const classesResponse = await fetch(`${API_BASE}/php/api/classes.php`);
+                const classes = await classesResponse.json();
+
+                const container = document.getElementById('classes-grid');
+                container.innerHTML = '';
+
+                if (!Array.isArray(classes)) return;
+
+                classes.forEach((cls, idx) => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6 col-lg-4';
+                    col.innerHTML = `
+                        <div class="card h-100 border-0 shadow-sm transition-all hover-lift reveal active glass" style="animation-delay: ${idx * 100}ms">
+                            <div class="card-body p-4">
+                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill mb-3">${cls.category}</span>
+                                <h4 class="card-title fw-bold text-dark mb-2">${cls.name}</h4>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>${cls.schedule}</small>
+                                    <small class="text-muted"><i class="bi bi-person-fill me-1"></i>${cls.capacity} kouta</small>
+                                </div>
+                                <h5 class="text-primary fw-bold mb-0">Rp ${Number(cls.price).toLocaleString('id-ID')}</h5>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(col);
+                });
+            } catch (error) {
+                console.error('Error loading classes:', error);
+            }
+        }
+
+        // Initial load
+        (async () => {
+            await resolveApiBase();
+            await loadData();
+        })();
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Main Custom JS -->
+    <script src="../static/js/main.js"></script>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close menu">×</button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="./index.html" onclick="closeMobileMenu()">Home</a>
+            <a href="./dashboard.html" onclick="closeMobileMenu()">Dashboard</a>
+            <a href="./students.html" class="active" onclick="closeMobileMenu()">Data Siswa</a>
+            <a href="./register.html" onclick="closeMobileMenu()">Registrasi Siswa</a>
+            <a href="./contact.html" onclick="closeMobileMenu()">Kontak</a>
+            <a href="./profile.html" onclick="closeMobileMenu()">Profil</a>
+        </nav>
+    </div>
+
+    <footer>
+        <div class="container-custom">
+            <div class="row g-5">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="logo-container" style="width: 42px; height: 42px;">
+                            <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">SBS</div>
+                        </div>
+                        <h4 class="mb-0 text-white">Sanggar Bunda Sari</h4>
+                    </div>
+                    <p class="text-white-50 mb-4">
+                        Wadah pengembangan bakat dan minat anak. Kami percaya setiap anak memiliki potensi luar biasa yang menunggu untuk dikembangkan.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="https://wa.me/6287780074616" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="mb-4">Menu Utama</h4>
+                    <ul>
+                        <li><a href="./index.html"><i class="bi bi-chevron-right me-2"></i>Home</a></li>
+                        <li><a href="./profile.html"><i class="bi bi-chevron-right me-2"></i>Profil</a></li>
+                        <li><a href="./students.html"><i class="bi bi-chevron-right me-2"></i>Data Siswa</a></li>
+                        <li><a href="./register.html"><i class="bi bi-chevron-right me-2"></i>Pendaftaran</a></li>
+                        <li><a href="./contact.html"><i class="bi bi-chevron-right me-2"></i>Kontak</a></li>
+                    </ul>
+                </div>
+
+                <!-- Programs -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Program Unggulan</h4>
+                    <ul>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Calistung (3-6 Tahun)</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Matematika Logika</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>English for Kids</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Seni Lukis & Kriya</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Tetap Terhubung</h4>
+                    <p class="text-white-50 mb-3">Dapatkan info promo dan jadwal terbaru.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Alamat Email">
+                        <button type="button" aria-label="Subscribe"><i class="bi bi-send-fill"></i></button>
+                    </div>
+                    <div class="mt-4 pt-3 border-top border-white-10">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-geo-alt-fill text-primary"></i>
+                            <span class="text-white-50">Jl. Greenery Permai No. 06 Blok A, Bojonggede, Kab.Bogor, Jawa Barat 16922</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-telephone-fill text-primary"></i>
+                            <span class="text-white-50">0877-8007-4616</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="mb-0 text-white-50">&copy; 2024 Sanggar Bunda Sari. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

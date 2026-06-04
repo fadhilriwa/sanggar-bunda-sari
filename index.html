@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Pendaftaran Siswa - Sanggar Bunda Sari</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <header id="mainHeader">
+            <div class="header-container container-custom">
+                <div class="header-left">
+                    <div class="logo-container">
+                        <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">SBS</div>
+                    </div>
+                    <div class="logo-text d-none d-sm-block">
+                        <h1>Sanggar Bunda Sari</h1>
+                        <p>Sistem Informasi Pendaftaran Siswa</p>
+                    </div>
+                </div>
+                
+                <div class="header-content d-none d-lg-block">
+                    <nav>
+                        <a href="./index.html" class="active">Home</a>
+                        <a href="./dashboard.html">Dashboard</a>
+                        <a href="./students.html">Data Siswa</a>
+                        <a href="./register.html">Registrasi</a>
+                        <a href="./contact.html">Kontak</a>
+                        <a href="./profile.html">Profil</a>
+                    </nav>
+                </div>
+
+                <button class="menu-toggle d-lg-none" id="menuToggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+
+
+        <main class="container-custom py-4">
+            <div class="hero-wrapper mb-5 animate-fade-in">
+                <div class="hero-card position-relative overflow-hidden">
+                    <div class="row align-items-center position-relative" style="z-index: 2;">
+                        <div class="col-lg-8">
+                            <h1 class="fw-bolder mb-3 animate-slide-up">Temukan Bakat Anak di Sanggar Bunda Sari</h1>
+                            <p class="lead mb-4 animate-slide-up delay-100">Bergabunglah dengan komunitas belajar seni dan akademik yang menyenangkan. Kami membantu menggali potensi terbaik buah hati Anda.</p>
+                            <div class="d-flex flex-wrap gap-3 animate-slide-up delay-200">
+                                <a class="btn btn-light text-primary fw-bold px-4 py-3" href="./register.html"><i class="bi bi-rocket-takeoff me-2"></i>Daftar Sekarang</a>
+                                <a class="btn btn-outline-light fw-bold px-4 py-3" href="./dashboard.html"><i class="bi bi-speedometer2 me-2"></i>Lihat Dashboard</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 d-none d-lg-block text-center animate-fade-in delay-300">
+                            <i class="bi bi-stars" style="font-size: 8rem; color: rgba(255,255,255,0.2); animation: pulse 3s infinite;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="row g-4 mb-5 animate-slide-up delay-200" id="stats">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="mb-3">
+                            <i class="bi bi-people-fill text-primary" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark" id="studentCount">-</h3>
+                        <p class="text-muted mb-0">Siswa Terdaftar</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="mb-3">
+                            <i class="bi bi-collection-fill text-primary" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark" id="classCount">-</h3>
+                        <p class="text-muted mb-0">Kelas Tersedia</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        <div class="mb-3">
+                            <i class="bi bi-pencil-square text-primary" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark" id="registrationCount">-</h3>
+                        <p class="text-muted mb-0">Registrasi Aktif</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="card border-0 shadow-sm mb-5 animate-slide-up delay-300">
+                <div class="card-body p-5">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <h2 class="fw-bold mb-4 text-dark">Kenapa Memilih Kami?</h2>
+                            <ul class="list-unstyled">
+                                <li class="d-flex mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Kurikulum Berstandar</h5>
+                                        <p class="text-muted mb-0">Materi pembelajaran disusun sistematis sesuai perkembangan anak.</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex mb-3">
+                                    <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Pengajar Profesional</h5>
+                                        <p class="text-muted mb-0">Didampingi oleh mentor yang berpengalaman dan sabar.</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                                    <div>
+                                        <h5 class="fw-bold mb-1">Fasilitas Lengkap</h5>
+                                        <p class="text-muted mb-0">Ruang belajar nyaman dan peralatan pendukung yang memadai.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 text-center">
+                             <div class="p-4 bg-light rounded-4 border border-light-subtle">
+                                <h4 class="fw-bold text-primary mb-3">Lokasi Kami</h4>
+                                <p class="text-muted mb-4">Jl. Greenery Permai No. 06 Blok A, Bojonggede, Kab.Bogor, Jawa barat 16922<br>Buka hari Senin - Jumat 08.00 - 17.00</p>
+                                <a href="./contact.html" class="btn btn-outline-primary fw-bold">Hubungi Kami</a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body p-3">
+                    <h2 class="card-title mb-3" style="color: #000000 !important; font-size: clamp(24px, 3.5vw, 32px); font-weight: 800;">Lokasi Kami</h2>
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <div class="map-card card border-0 shadow-sm h-100">
+                                <div class="card-header bg-white d-flex justify-content-between align-items-center" style="padding: 14px 18px; border-bottom: 2px solid rgba(99, 102, 241, 0.1); background: #ffffff !important;">
+                                    <div>
+                                        <h5 class="mb-2 fw-bold" style="color: #000000 !important; font-size: 20px; line-height: 1.4;">Sanggar Bunda Sari Cibinong</h5>
+                                        <p class="mb-0" style="color: #1a1a1a !important; font-size: 15px; font-weight: 700;">Jl. Raya Cibinong, Bogor</p>
+                                    </div>
+                                    <a class="btn btn-sm" href="https://maps.app.goo.gl/D8VmbsGTHezzQqR39" target="_blank" style="font-weight: 800; padding: 10px 18px; border: none !important; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important; color: #ffffff !important; border-radius: 10px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); transition: all 0.3s; text-decoration: none; display: inline-block; outline: none !important; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;" onfocus="this.style.outline='none'; this.style.boxShadow='0 4px 12px rgba(99, 102, 241, 0.3)';" onblur="this.style.outline='none';"><i class="bi bi-geo-alt me-1"></i>Buka di Maps</a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="map-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                                        <iframe class="map-frame position-absolute top-0 start-0 w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3999213886723!2d106.81454837513127!3d-6.470919593520779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c396cf492683%3A0xee96f247db479af8!2sSanggar%20Bunda%20Sari%20Cibinong!5e0!3m2!1sid!2sid!4v1762310317088!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="map-card card border-0 shadow-sm h-100">
+                                <div class="card-header bg-white d-flex justify-content-between align-items-center" style="padding: 14px 18px; border-bottom: 2px solid rgba(99, 102, 241, 0.1); background: #ffffff !important;">
+                                    <div>
+                                        <h5 class="mb-2 fw-bold" style="color: #000000 !important; font-size: 20px; line-height: 1.4;">Sanggar Bunda Sari Inkopad</h5>
+                                        <p class="mb-0" style="color: #1a1a1a !important; font-size: 15px; font-weight: 700;">Jl. Inkopad, Bogor</p>
+                                    </div>
+                                    <a class="btn btn-sm" href="https://maps.app.goo.gl/986jwXfLfnzfBEbE6" target="_blank" style="font-weight: 800; padding: 10px 18px; border: none !important; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important; color: #ffffff !important; border-radius: 10px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); transition: all 0.3s; text-decoration: none; display: inline-block; outline: none !important; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;" onfocus="this.style.outline='none'; this.style.boxShadow='0 4px 12px rgba(99, 102, 241, 0.3)';" onblur="this.style.outline='none';"><i class="bi bi-geo-alt me-1"></i>Buka di Maps</a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="map-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                                        <iframe class="map-frame position-absolute top-0 start-0 w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.504318527016!2d106.7484775751313!3d-6.457603293533939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e9290118d9a5%3A0xdce31ac5120ccc74!2sSanggar%20bunda%20sari%20inkopad!5e0!3m2!1sid!2sid!4v1762309533801!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="map-card card border-0 shadow-sm h-100">
+                                <div class="card-header bg-white d-flex justify-content-between align-items-center" style="padding: 14px 18px; border-bottom: 2px solid rgba(99, 102, 241, 0.1); background: #ffffff !important;">
+                                    <div>
+                                        <h5 class="mb-2 fw-bold" style="color: #000000 !important; font-size: 20px; line-height: 1.4;">Sanggar Bunda Sari Bojong</h5>
+                                        <p class="mb-0" style="color: #1a1a1a !important; font-size: 15px; font-weight: 700;">Bojonggede, Bogor</p>
+                                    </div>
+                                    <a class="btn btn-sm" href="https://maps.app.goo.gl/D8VmbsGTHezzQqR39" target="_blank" style="font-weight: 800; padding: 10px 18px; border: none !important; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important; color: #ffffff !important; border-radius: 10px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); transition: all 0.3s; text-decoration: none; display: inline-block; outline: none !important; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;" onfocus="this.style.outline='none'; this.style.boxShadow='0 4px 12px rgba(99, 102, 241, 0.3)';" onblur="this.style.outline='none';"><i class="bi bi-geo-alt me-1"></i>Buka di Maps</a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="map-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                                        <iframe class="map-frame position-absolute top-0 start-0 w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.289049258413!2d106.79452527513155!3d-6.485031993506888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c30033a7a3ab%3A0x7ef44c5b1591c06d!2sSANGGAR%20BUNDA%20SARI%20BOJONGGEDE!5e0!3m2!1sid!2sid!4v1762309499279!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="map-card card border-0 shadow-sm h-100">
+                                <div class="card-header bg-white d-flex justify-content-between align-items-center" style="padding: 14px 18px; border-bottom: 2px solid rgba(99, 102, 241, 0.1); background: #ffffff !important;">
+                                    <div>
+                                        <h5 class="mb-2 fw-bold" style="color: #000000 !important; font-size: 20px; line-height: 1.4;">Sanggar Bunda Sari Cilebut</h5>
+                                        <p class="mb-0" style="color: #1a1a1a !important; font-size: 15px; font-weight: 700;">Cilebut, Bogor</p>
+                                    </div>
+                                    <a class="btn btn-sm" href="https://maps.app.goo.gl/986jwXfLfnzfBEbE6" target="_blank" style="font-weight: 800; padding: 10px 18px; border: none !important; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important; color: #ffffff !important; border-radius: 10px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); transition: all 0.3s; text-decoration: none; display: inline-block; outline: none !important; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;" onfocus="this.style.outline='none'; this.style.boxShadow='0 4px 12px rgba(99, 102, 241, 0.3)';" onblur="this.style.outline='none';"><i class="bi bi-geo-alt me-1"></i>Buka di Maps</a>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="map-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                                        <iframe class="map-frame position-absolute top-0 start-0 w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d63422.710969079984!2d106.7249404!3d-6.5318591!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c34a8d24edef%3A0x2093c62490c61043!2sSanggar%20Bunda%20Sari%20Cilebut!5e0!3m2!1sid!2sid!4v1762268899579!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body p-3">
+                    <h2 class="card-title mb-3" style="color: #000000 !important; font-weight: 800; font-size: 24px;">Fitur Utama</h2>
+                    <div class="row g-2">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card card border-0 glass h-100 reveal">
+                                <div class="card-body text-center p-3">
+                                    <div class="mb-2">
+                                        <i class="bi bi-person-check display-4 text-primary"></i>
+                                    </div>
+                                    <h3 class="h5 fw-bold mb-2" style="color: #000000 !important; font-weight: 800;">Registrasi Siswa</h3>
+                                    <p class="mb-0 small" style="color: #475569; line-height: 1.7;">Proses pendaftaran ringkas, validasi jelas, dan konfirmasi instan. Sistem yang mudah digunakan untuk mempermudah orang tua dalam mendaftarkan anaknya.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card card border-0 bg-light h-100 reveal">
+                                <div class="card-body text-center p-3">
+                                    <div class="mb-2">
+                                        <i class="bi bi-lightbulb display-4 text-primary"></i>
+                                    </div>
+                                    <h3 class="h5 fw-bold mb-2" style="color: #000000 !important; font-weight: 800;">Rekomendasi Kelas</h3>
+                                    <p class="mb-0 small" style="color: #475569; line-height: 1.7;">Rekomendasi kelas berbasis minat dan jenjang usia siswa menggunakan algoritma Apriori untuk memberikan saran yang tepat.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card card border-0 bg-light h-100 reveal">
+                                <div class="card-body text-center p-3">
+                                    <div class="mb-2">
+                                        <i class="bi bi-graph-up-arrow display-4 text-primary"></i>
+                                    </div>
+                                    <h3 class="h5 fw-bold mb-2" style="color: #000000 !important; font-weight: 800;">Data Analitik</h3>
+                                    <p class="mb-0 small" style="color: #475569; line-height: 1.7;">Pantau tren pendaftaran dan tingkat keterisian kelas dengan mudah melalui dashboard yang informatif dan visual.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card card border-0 bg-light h-100 reveal">
+                                <div class="card-body text-center p-3">
+                                    <div class="mb-2">
+                                        <i class="bi bi-shield-lock display-4 text-primary"></i>
+                                    </div>
+                                    <h3 class="h5 fw-bold mb-2" style="color: #000000 !important; font-weight: 800;">Data Aman</h3>
+                                    <p class="mb-0 small" style="color: #475569; line-height: 1.7;">Data siswa tersimpan aman dengan pengelolaan terpusat dan sistem yang terjamin keamanannya.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body p-3">
+                    <h2 class="card-title mb-3" style="color: #000000 !important; font-weight: 800; font-size: 24px;">Program Unggulan</h2>
+                    <div class="row g-2">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card card border-0 bg-light h-100">
+                                <div class="card-body p-3">
+                                    <h3 class="h5 fw-bold mb-2" style="color: #000000 !important; font-weight: 800;">Calistung</h3>
+                                    <p class="mb-2" style="color: #475569; line-height: 1.7; font-size: 14px;">Fondasi literasi dan numerasi yang menyenangkan untuk siswa awal. Program ini dirancang khusus untuk membangun dasar belajar yang kuat.</p>
+                                    <span class="badge bg-primary" style="font-size: 12px; padding: 6px 12px;">Usia 4 tahun– SD</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card card border-0 bg-light h-100">
+                                <div class="card-body p-3">
+                                    <h3 class="h5 fw-bold mb-2" style="color: #000000 !important; font-weight: 800;">Matematika (SD - SMP)</h3>
+                                    <p class="mb-2" style="color: #475569; line-height: 1.7; font-size: 14px;">Penguatan konsep dan pemecahan masalah secara bertahap. Setiap level disesuaikan dengan kurikulum sekolah.</p>
+                                    <span class="badge bg-primary" style="font-size: 12px; padding: 6px 12px;">Kurikulum bertahap</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card card border-0 bg-light h-100">
+                                <div class="card-body p-3">
+                                    <h3 class="h5 fw-bold mb-2" style="color: #000000 !important; font-weight: 800;">Bahasa Inggris (SD - SMP)</h3>
+                                    <p class="mb-2" style="color: #475569; line-height: 1.7; font-size: 14px;">Vocabulary, speaking, dan reading dengan aktivitas interaktif yang membuat belajar bahasa Inggris menjadi menyenangkan.</p>
+                                    <span class="badge bg-primary" style="font-size: 12px; padding: 6px 12px;">Komunikatif</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="feature-card card border-0 bg-light h-100">
+                                <div class="card-body p-3">
+                                    <h3 class="h5 fw-bold mb-2" style="color: #000000 !important; font-weight: 800;">Melukis</h3>
+                                    <p class="mb-2" style="color: #475569; line-height: 1.7; font-size: 14px;">Eksplorasi kreativitas, warna, dan komposisi dalam suasana suportif. Mengembangkan imajinasi dan kemampuan seni anak.</p>
+                                    <span class="badge bg-primary" style="font-size: 12px; padding: 6px 12px;">Kreativitas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-lg mb-3 bg-primary text-white" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important; border-radius: 20px;">
+                <div class="card-body p-3">
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <span class="badge bg-white text-primary px-4 py-2" style="font-size: 14px; font-weight: 600; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s;">Terpercaya</span>
+                        <span class="badge bg-white text-primary px-4 py-2" style="font-size: 14px; font-weight: 600; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s;">Pengajar Berpengalaman</span>
+                        <span class="badge bg-white text-primary px-4 py-2" style="font-size: 14px; font-weight: 600; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s;">Kurikulum Terstruktur</span>
+                        <span class="badge bg-white text-primary px-4 py-2" style="font-size: 14px; font-weight: 600; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s;">Lingkungan Nyaman</span>
+                        <span class="badge bg-white text-primary px-4 py-2" style="font-size: 14px; font-weight: 600; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.3s;">Biaya Terjangkau</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTIMONI SECTION — dynamic from DB -->
+            <div class="card border-0 shadow-sm mb-3" id="testimoni-section">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="card-title mb-0" style="color:#000;font-weight:800;font-size:24px">Testimoni Orang Tua</h2>
+                        <div id="testi-stars-summary" style="color:#f59e0b;font-size:13px"></div>
+                    </div>
+                    <div class="row g-3" id="testimoni-container">
+                        <div class="col-12 text-center py-4" id="testi-loading">
+                            <div class="spinner-border text-success" role="status" style="width:2rem;height:2rem"></div>
+                            <p class="mt-2 text-muted small">Memuat testimoni...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GALERI SECTION — dynamic from DB -->
+            <div class="card border-0 shadow-sm mb-3" id="galeri-section">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="card-title mb-0" style="color:#000;font-weight:800;font-size:24px">Galeri Kegiatan</h2>
+                        <a href="#" id="galeri-lihat-semua" style="color:var(--bs-success);font-size:13px;display:none">Lihat Semua →</a>
+                    </div>
+                    <div class="row g-3" id="galeri-container">
+                        <div class="col-12 text-center py-4" id="galeri-loading">
+                            <div class="spinner-border text-success" role="status" style="width:2rem;height:2rem"></div>
+                            <p class="mt-2 text-muted small">Memuat galeri...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END GALERI - removed static items, now dynamic -->
+
+            <div class="card border-0 shadow-lg mb-3 bg-primary text-white" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important; border-radius: 20px; overflow: hidden;">
+                <div class="card-body p-3 text-center">
+                    <div class="row align-items-center">
+                        <div class="col-md-8 text-md-start">
+                            <h2 class="h3 mb-3" style="font-size: clamp(22px, 3vw, 28px); font-weight: 700;">Siap Memulai Perjalanan Belajar?</h2>
+                            <p class="mb-0 lead" style="font-size: clamp(15px, 2vw, 18px); line-height: 1.7; opacity: 0.95;">Daftarkan anak Anda hari ini dan nikmati pengalaman belajar yang positif dan bermakna. Bergabunglah dengan ratusan keluarga yang telah mempercayakan pendidikan anak mereka kepada kami.</p>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <a class="btn btn-light btn-lg" href="./register.html" style="padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: all 0.3s;"><i class="bi bi-arrow-right me-2"></i>Mulai Registrasi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body p-3">
+                    <h2 class="card-title mb-3" style="color: #000000 !important; font-weight: 800; font-size: 24px;">Pertanyaan yang Sering Diajukan</h2>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Bagaimana cara mendaftar?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Masuk ke menu Registrasi, isi data siswa lengkap, pilih kelas yang diinginkan, lalu kirim. Data akan tersimpan dan Anda akan mendapatkan rekomendasi kelas berdasarkan pilihan Anda.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Apakah bisa memilih lebih dari satu kelas?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Bisa. Pilih beberapa kelas yang diinginkan pada bagian Pilih Kelas saat registrasi. Sistem akan memberikan rekomendasi kelas tambahan berdasarkan pola registrasi siswa sebelumnya.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Bagaimana jadwal dan biaya?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Setiap program memiliki jadwal dan biaya berbeda. Lihat detail lengkap di halaman Data Kelas atau hubungi kami langsung untuk informasi terbaru dan konsultasi program yang sesuai untuk anak Anda.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Apakah ada program uji coba?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Ya, kami menyediakan program uji coba untuk beberapa kelas. Hubungi kami untuk informasi lebih lanjut mengenai jadwal dan syarat program uji coba.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Bagaimana sistem pembayarannya?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Pembayaran dapat dilakukan secara tunai atau transfer bank. Informasi detail mengenai metode pembayaran dan jadwal akan diberikan setelah proses registrasi selesai.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+    <!-- Redesigned Footer -->
+    <footer>
+        <div class="container-custom">
+            <div class="row g-5">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="logo-container" style="width: 42px; height: 42px;">
+                            <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">SBS</div>
+                        </div>
+                        <h4 class="mb-0 text-white">Sanggar Bunda Sari</h4>
+                    </div>
+                    <p class="text-white-50 mb-4">
+                        Wadah pengembangan bakat dan minat anak. Kami percaya setiap anak memiliki potensi luar biasa yang menunggu untuk dikembangkan.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="https://wa.me/6281234567890" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="mb-4">Menu Utama</h4>
+                    <ul>
+                        <li><a href="./index.html"><i class="bi bi-chevron-right me-2"></i>Home</a></li>
+                        <li><a href="./profile.html"><i class="bi bi-chevron-right me-2"></i>Profil</a></li>
+                        <li><a href="./students.html"><i class="bi bi-chevron-right me-2"></i>Data Siswa</a></li>
+                        <li><a href="./register.html"><i class="bi bi-chevron-right me-2"></i>Pendaftaran</a></li>
+                        <li><a href="./contact.html"><i class="bi bi-chevron-right me-2"></i>Kontak</a></li>
+                    </ul>
+                </div>
+
+                <!-- Programs -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Program Unggulan</h4>
+                    <ul>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Calistung (3-6 Tahun)</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Matematika Logika</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>English for Kids</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Seni Lukis & Kriya</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Tetap Terhubung</h4>
+                    <p class="text-white-50 mb-3">Dapatkan info promo dan jadwal terbaru.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Alamat Email">
+                        <button type="button" aria-label="Subscribe"><i class="bi bi-send-fill"></i></button>
+                    </div>
+                    <div class="mt-4 pt-3 border-top border-white-10">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-geo-alt-fill text-primary"></i>
+                            <span class="text-white-50">Jl. Greenery Permai No. 06 Blok A, Bojonggede, kab.Bogor, jawa Barat 16922</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-telephone-fill text-primary"></i>
+                            <span class="text-white-50">0877-8007-4616</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="mb-0 text-white-50">&copy; 2024 Sanggar Bunda Sari. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let API_BASE = '';
+        async function resolveApiBase() {
+            const candidates = [
+                '..',
+                `${location.origin}/sistem-pendaftaran-siswa`
+            ];
+            for (const base of candidates) {
+                try {
+                    const res = await fetch(`${base}/php/api/students.php`, { method: 'GET' });
+                    if (res.ok) { API_BASE = base; return; }
+                } catch (_) {}
+            }
+            API_BASE = candidates[0];
+        }
+
+        // Load stats
+        async function loadStats() {
+            try {
+                const [studentsRes, classesRes, registrationsRes] = await Promise.all([
+                    fetch(`${API_BASE}/php/api/students.php`),
+                    fetch(`${API_BASE}/php/api/classes.php`),
+                    fetch(`${API_BASE}/php/api/registrations.php`)
+                ]);
+                
+                if (!studentsRes.ok || !classesRes.ok || !registrationsRes.ok) {
+                    throw new Error('Failed to fetch stats');
+                }
+                
+                const students = await studentsRes.json();
+                const classes = await classesRes.json();
+                const registrations = await registrationsRes.json();
+                
+                // Animate values using helper from main.js if available, else standard textContent
+                if (window.animateValue) {
+                    animateValue('studentCount', 0, Array.isArray(students) ? students.length : 0, 1000);
+                    animateValue('classCount', 0, Array.isArray(classes) ? classes.length : 0, 1000);
+                    animateValue('registrationCount', 0, Array.isArray(registrations) ? registrations.length : 0, 1000);
+                } else {
+                    document.getElementById('studentCount').textContent = Array.isArray(students) ? students.length : 0;
+                    document.getElementById('classCount').textContent = Array.isArray(classes) ? classes.length : 0;
+                    document.getElementById('registrationCount').textContent = Array.isArray(registrations) ? registrations.length : 0;
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                document.getElementById('studentCount').textContent = '0';
+                document.getElementById('classCount').textContent = '0';
+                document.getElementById('registrationCount').textContent = '0';
+            }
+        }
+        (async () => {
+            await resolveApiBase();
+            await loadStats();
+        })();
+
+        // Map switcher
+        document.addEventListener('change', function(e) {
+            if (e.target && e.target.name === 'mapChoice') {
+                const url = e.target.value;
+                const frame = document.getElementById('mapFrame');
+                if (frame) frame.src = url;
+                const openBtn = document.querySelector('a.btn[href^="https://maps.app.goo.gl/"]');
+                if (openBtn) openBtn.href = url.replace('https://www.google.com/maps?q=', '').replace('&output=embed','');
+            }
+        });
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Main Custom JS -->
+    <script src="../static/js/main.js"></script>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close menu">×</button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="./index.html" class="active" onclick="closeMobileMenu()">Home</a>
+            <a href="./dashboard.html" onclick="closeMobileMenu()">Dashboard</a>
+            <a href="./students.html" onclick="closeMobileMenu()">Data Siswa</a>
+            <a href="./register.html" onclick="closeMobileMenu()">Registrasi Siswa</a>
+            <a href="./contact.html" onclick="closeMobileMenu()">Kontak</a>
+            <a href="./profile.html" onclick="closeMobileMenu()">Profil</a>
+        </nav>
+    </div>
+
+    <!-- CMS DYNAMIC LOADER: Testimoni & Galeri from DB -->
+    <script>
+    const CMS_BASE = '/WEB/Website-Sanggar-Bunda-Sari/php/api';
+
+    // ── LOAD TESTIMONI ───────────────────────────────────────────────
+    async function loadTestimoniPublic() {
+      const container = document.getElementById('testimoni-container');
+      const loading = document.getElementById('testi-loading');
+      const starsSummary = document.getElementById('testi-stars-summary');
+      if (!container) return;
+      try {
+        const res = await fetch(`${CMS_BASE}/cms_testimoni.php?status=tampil`);
+        const data = await res.json();
+        if (loading) loading.remove();
+        if (!data.length) {
+          container.innerHTML = '<div class="col-12 text-center py-4 text-muted"><i class="bi bi-chat-quote" style="font-size:32px;opacity:.4"></i><p class="mt-2">Belum ada testimoni</p></div>';
+          return;
+        }
+        const avgRating = (data.reduce((s, t) => s + parseInt(t.rating || 5), 0) / data.length).toFixed(1);
+        if (starsSummary) starsSummary.innerHTML = '⭐'.repeat(Math.round(avgRating)) + ' ' + avgRating + '/5 (' + data.length + ' ulasan)';
+        const cols = ['glass', 'bg-light', 'bg-light'];
+        container.innerHTML = data.map(function(t, i) {
+          var fotHtml = t.foto_url ? '<img src="' + t.foto_url + '" style="width:100%;height:100%;object-fit:cover">' : '👤';
+          var stars = ''; for (var s = 1; s <= 5; s++) stars += s <= (t.rating||5) ? '⭐' : '';
+          return '<div class="col-md-4">'
+            + '<div class="testimonial card border-0 ' + cols[i % cols.length] + ' h-100 reveal active">'
+            + '<div class="card-body">'
+            + '<div class="d-flex align-items-center mb-3 gap-3">'
+            + '<div style="width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:20px">' + fotHtml + '</div>'
+            + '<div><div style="font-weight:700;font-size:13px;color:#1f2937">' + (t.nama_ortu || '') + '</div>'
+            + '<div style="font-size:11px;color:#64748b">Orang tua ' + (t.nama_anak || '') + (t.program ? ' · ' + t.program : '') + '</div>'
+            + '<div style="color:#f59e0b;font-size:12px">' + stars + '</div></div></div>'
+            + '<p class="mb-0" style="color:#1f2937;line-height:1.7;font-style:italic;font-size:14px">"' + (t.isi || '') + '"</p>'
+            + '</div></div></div>';
+        }).join('');
+      } catch(e) {
+        if (loading) loading.innerHTML = '<p class="text-muted small">Gagal memuat testimoni</p>';
+      }
+    }
+
+    // ── LOAD GALERI ──────────────────────────────────────────────────
+    async function loadGaleriPublic() {
+      const container = document.getElementById('galeri-container');
+      const loading = document.getElementById('galeri-loading');
+      const lihatSemua = document.getElementById('galeri-lihat-semua');
+      if (!container) return;
+      try {
+        const res = await fetch(`${CMS_BASE}/cms_galeri.php`);
+        const data = await res.json();
+        if (loading) loading.remove();
+        if (!Array.isArray(data) || !data.length) {
+          container.innerHTML = '<div class="col-12 text-center py-4 text-muted"><i class="bi bi-images" style="font-size:32px;opacity:.4"></i><p class="mt-2">Belum ada foto kegiatan</p></div>';
+          return;
+        }
+        // Show max 6 photos
+        const show = data.slice(0, 6);
+        if (data.length > 6 && lihatSemua) lihatSemua.style.display = 'inline';
+        container.innerHTML = show.map(function(f) {
+          var src = f.foto_url || '/WEB/Website-Sanggar-Bunda-Sari/uploads/galeri/' + f.foto;
+          var tgl = f.tgl_kegiatan ? new Date(f.tgl_kegiatan).toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' }) : '';
+          return '<div class="col-md-6 col-lg-4">'
+            + '<div class="gallery-item card border-0 shadow-sm h-100 overflow-hidden reveal active" style="cursor:pointer" onclick="openLightbox(\'' + src.replace(/'/g,"\\'")+"'" + ',\'' + (f.keterangan||'').replace(/'/g,"\\'")+"'" + ');">'
+            + '<img src="' + src + '" alt="' + (f.keterangan||'Foto Kegiatan') + '" class="card-img-top" style="height:200px;object-fit:cover;transition:.3s" onmouseover="this.style.transform=\'scale(1.05)\'" onmouseout="this.style.transform=\'scale(1)\'" onerror="this.src=\'../static/Images/logo.png\'">'
+            + (f.keterangan || f.tag_program ? '<div class="card-body py-2 px-3">'
+              + (f.keterangan ? '<h6 class="mb-1 fw-bold" style="color:#1f2937;font-size:13px">' + f.keterangan + '</h6>' : '')
+              + (f.tag_program ? '<span class="badge bg-success bg-opacity-10 text-success" style="font-size:11px">' + f.tag_program + '</span>' : '')
+              + (tgl ? '<div class="text-muted" style="font-size:11px;margin-top:4px">' + tgl + '</div>' : '')
+              + '</div>' : '')
+            + '</div></div>';
+        }).join('');
+      } catch(e) {
+        if (loading) loading.innerHTML = '<p class="text-muted small">Gagal memuat galeri</p>';
+      }
+    }
+
+    // ── LIGHTBOX ─────────────────────────────────────────────────────
+    function openLightbox(src, caption) {
+      let lb = document.getElementById('sbs-lightbox');
+      if (!lb) {
+        lb = document.createElement('div');
+        lb.id = 'sbs-lightbox';
+        lb.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:zoom-out;padding:20px';
+        lb.onclick = () => lb.remove();
+        document.body.appendChild(lb);
+      }
+      lb.innerHTML = `
+        <img src="${src}" style="max-width:90vw;max-height:80vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)" onerror="this.alt='Foto tidak tersedia'">
+        ${caption ? `<p style="color:#fff;margin-top:16px;font-size:14px;text-align:center;max-width:500px">${caption}</p>` : ''}
+        <button style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:20px;cursor:pointer;line-height:1" onclick="document.getElementById('sbs-lightbox').remove()">×</button>`;
+    }
+    window.openLightbox = openLightbox;
+
+    // ── INIT ─────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTestimoniPublic();
+      loadGaleriPublic();
+    });
+    </script>
+
+</body>
+</html>

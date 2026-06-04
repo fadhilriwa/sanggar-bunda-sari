@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - Sanggar Bunda Sari</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <header id="mainHeader">
+            <div class="header-container container-custom">
+                <div class="header-left">
+                    <div class="logo-container">
+                        <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">SBS</div>
+                    </div>
+                    <div class="logo-text d-none d-sm-block">
+                        <h1>Sanggar Bunda Sari</h1>
+                        <p>Kontak</p>
+                    </div>
+                </div>
+                
+                <div class="header-content d-none d-lg-block">
+                    <nav>
+                        <a href="./index.html">Home</a>
+                        <a href="./dashboard.html">Dashboard</a>
+                        <a href="./students.html">Data Siswa</a>
+                        <a href="./register.html">Registrasi</a>
+                        <a href="./contact.html" class="active">Kontak</a>
+                        <a href="./profile.html">Profil</a>
+                    </nav>
+                </div>
+
+                <button class="menu-toggle d-lg-none" id="menuToggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+
+
+        <main class="container-custom py-4">
+             <!-- Hero Section -->
+            <div class="hero-wrapper mb-5 animate-fade-in">
+                <div class="hero-card py-5">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 mb-4 mb-lg-0">
+                            <h1 class="mb-3">Hubungi Kami</h1>
+                            <p class="lead mb-4 text-white-50">Kami siap membantu Anda. Silakan hubungi kami melalui saluran yang tersedia atau kunjungi lokasi kami.</p>
+                            <div class="d-flex flex-wrap gap-3">
+                                <a href="https://wa.me/6287780074616" target="_blank" class="btn btn-primary px-4 py-2">
+                                    <i class="bi bi-whatsapp me-2"></i> Chat WhatsApp
+                                </a>
+                                <a href="mailto:info@sanggarbundasari.id" class="btn btn-outline-light px-4 py-2">
+                                    <i class="bi bi-envelope me-2"></i> Kirim Email
+                                </a>
+                            </div>
+                        </div>
+                         <div class="col-lg-4">
+                            <div class="card border-0 glass text-dark shadow-sm">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold mb-3 d-flex align-items-center">
+                                        <i class="bi bi-clock-history me-2"></i> Jam Operasional
+                                    </h5>
+                                    <ul class="list-unstyled mb-0 opacity-75">
+                                        <li class="d-flex justify-content-between mb-2">
+                                            <span>Senin - Jumat</span>
+                                            <span class="fw-bold">08:00 - 17:00</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <span>Sabtu & Minggu</span>
+                                            <span class="fw-bold text-danger-subtle">Libur</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-5 animate-slide-up delay-100">
+                <div class="col-lg-4">
+                    <!-- Contact Info Cards -->
+                     <div class="card border-0 shadow-sm mb-4 hover-lift reveal active" style="animation-delay: 100ms">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icon-box bg-indigo-50 text-indigo rounded-3 p-3">
+                                    <i class="bi bi-geo-alt-fill fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Alamat Kantor SBS</h5>
+                                    <p class="text-muted mb-0 small">Jl. Greenery Permai No. 06 Blok A, Bojonggede, Kab.Bogor, Jawa Barat 16922</p>
+                                </div>
+                            </div>
+                            <a href="https://maps.app.goo.gl/313ouBXeeEjmeQ4f8" target="_blank" class="btn btn-sm btn-outline-primary w-100">Lihat Peta</a>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow-sm mb-4 hover-lift reveal active" style="animation-delay: 200ms">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icon-box bg-indigo-50 text-indigo rounded-3 p-3">
+                                    <i class="bi bi-telephone-fill fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Telepon</h5>
+                                    <p class="text-muted mb-0 small">0877-8007-4616</p>
+                                </div>
+                            </div>
+                            <a href="tel:+6281234567890" class="btn btn-sm btn-outline-primary w-100">Hubungi Sekarang</a>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow-sm mb-4 hover-lift reveal active" style="animation-delay: 300ms">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="icon-box bg-indigo-50 text-indigo rounded-3 p-3">
+                                    <i class="bi bi-envelope-fill fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Email</h5>
+                                    <p class="text-muted mb-0 small">bunsarsbs@gmail.com</p>
+                                </div>
+                            </div>
+                             <a href="mailto:bunsarsbs@gmail.com" class="btn btn-sm btn-outline-primary w-100">Kirim Email</a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-lg-8">
+                     <!-- Contact Form -->
+                    <div class="card border-0 shadow-sm glass h-100 reveal active" style="animation-delay: 400ms">
+                        <div class="card-body p-4 p-lg-5">
+                            <h3 class="fw-bold mb-4">Kirim Pesan</h3>
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="contactName" class="form-label fw-bold small text-uppercase text-muted">Nama Lengkap</label>
+                                        <input type="text" class="form-control bg-light border-0 py-3 px-3" id="contactName" name="name" placeholder="Nama Anda" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contactEmail" class="form-label fw-bold small text-uppercase text-muted">Email</label>
+                                        <input type="email" class="form-control bg-light border-0 py-3 px-3" id="contactEmail" name="email" placeholder="email@contoh.com" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contactPhone" class="form-label fw-bold small text-uppercase text-muted">WhatsApp / Telepon</label>
+                                        <input type="tel" class="form-control bg-light border-0 py-3 px-3" id="contactPhone" name="phone" placeholder="08123xxxx" required>
+                                    </div>
+                                     <div class="col-md-6">
+                                        <label for="contactSubject" class="form-label fw-bold small text-uppercase text-muted">Subjek</label>
+                                        <input type="text" class="form-control bg-light border-0 py-3 px-3" id="contactSubject" name="subject" placeholder="Subjek Pesan" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="contactMessage" class="form-label fw-bold small text-uppercase text-muted">Pesan</label>
+                                        <textarea class="form-control bg-light border-0 py-3 px-3" id="contactMessage" name="message" rows="5" placeholder="Tulis pesan Anda disini..." required></textarea>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">
+                                            <i class="bi bi-send-fill me-2"></i> Kirim Pesan
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Map Section -->
+            <div class="card border-0 shadow-sm animate-slide-up delay-200 overflow-hidden mb-4">
+                 <div class="card-body p-0">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3999213886723!2d106.81454837513127!3d-6.470919593520779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c396cf492683%3A0xee96f247db479af8!2sSanggar%20Bunda%20Sari%20Cibinong!5e0!3m2!1sid!2sid!4v1762310317088!5m2!1sid!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                 </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <footer>
+        <div class="container-custom">
+            <div class="row g-5">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="logo-container" style="width: 42px; height: 42px;">
+                            <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">SBS</div>
+                        </div>
+                        <h4 class="mb-0 text-white">Sanggar Bunda Sari</h4>
+                    </div>
+                    <p class="text-white-50 mb-4">
+                        Wadah pengembangan bakat dan minat anak. Kami percaya setiap anak memiliki potensi luar biasa yang menunggu untuk dikembangkan.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="https://wa.me/6287780074616" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="mb-4">Menu Utama</h4>
+                    <ul>
+                        <li><a href="./index.html"><i class="bi bi-chevron-right me-2"></i>Home</a></li>
+                        <li><a href="./profile.html"><i class="bi bi-chevron-right me-2"></i>Profil</a></li>
+                        <li><a href="./students.html"><i class="bi bi-chevron-right me-2"></i>Data Siswa</a></li>
+                        <li><a href="./register.html"><i class="bi bi-chevron-right me-2"></i>Pendaftaran</a></li>
+                        <li><a href="./contact.html"><i class="bi bi-chevron-right me-2"></i>Kontak</a></li>
+                    </ul>
+                </div>
+
+                <!-- Programs -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Program Unggulan</h4>
+                    <ul>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Calistung (3-6 Tahun)</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Matematika Logika</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>English for Kids</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right me-2"></i>Seni Lukis & Kriya</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Tetap Terhubung</h4>
+                    <p class="text-white-50 mb-3">Dapatkan info promo dan jadwal terbaru.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Alamat Email">
+                        <button type="button" aria-label="Subscribe"><i class="bi bi-send-fill"></i></button>
+                    </div>
+                    <div class="mt-4 pt-3 border-top border-white-10">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-geo-alt-fill text-primary"></i>
+                            <span class="text-white-50">Jl. Greenery Permai No. 06 Blok A, Bojonggede, Kab.Bogor, Jawa Barat 16922</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-telephone-fill text-primary"></i>
+                            <span class="text-white-50">0877-8007-4616</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="mb-0 text-white-50">&copy; 2024 Sanggar Bunda Sari. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, this would be an API call
+            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan menghubungi Anda segera.');
+            this.reset();
+        });
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Main Custom JS -->
+    <script src="../static/js/main.js"></script>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close menu">×</button>
+        </div>
+        <nav class="mobile-menu-nav">
+            <a href="./index.html" onclick="closeMobileMenu()">Home</a>
+            <a href="./dashboard.html" onclick="closeMobileMenu()">Dashboard</a>
+            <a href="./students.html" onclick="closeMobileMenu()">Data Siswa</a>
+            <a href="./register.html" onclick="closeMobileMenu()">Registrasi Siswa</a>
+            <a href="./contact.html" class="active" onclick="closeMobileMenu()">Kontak</a>
+            <a href="./profile.html" onclick="closeMobileMenu()">Profil</a>
+        </nav>
+    </div>
+</body>
+</html>
